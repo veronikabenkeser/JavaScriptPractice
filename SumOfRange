@@ -1,0 +1,23 @@
+function sumAll(arr){
+    //make a new array of nums from min to max
+    var minN = Math.min(...arr);// need the spread operator (...) because the Math.min func normally works like this: Math.min(1,10); 
+    var maxN = Math.max(...arr);
+
+    //or
+    // var minN = Math.min.apply(null, arr);
+    // var maxN = Math.max.apply(null, arr);
+
+
+    //Now, create a new array that contains nums from min to max
+    var newA=[];
+    for(var i = minN; i<=maxN; i++){
+        newA.push(i);
+    }
+
+    // Reduce on that new array
+    return newA.reduce(function(a,b){
+      return a+b;  
+    });
+}
+
+sumAll([1, 10]);
