@@ -1,0 +1,15 @@
+function perm(str){
+    if (str.length ===1){
+        return [str];
+    }else{
+        var char = str[0];
+        var perms = perm(str.substring(1));
+        var result=[];
+        for(var k=0; k<perms.length; k++){
+            for(var i=0; i<perms[k].length+1; i++){
+                result.push(perms[k].substring(0,i)+char+perms[k].substring(i));
+            }
+        }
+        return result;
+    }
+}
