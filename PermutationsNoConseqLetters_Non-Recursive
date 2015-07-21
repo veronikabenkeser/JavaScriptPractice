@@ -1,0 +1,63 @@
+function perm(str){
+    var char=[];
+    var result=[];
+   
+   // While the length of the str>1, accumulate an array of all but the last letter. Put the last letter into array p.
+   
+    while (str.length>1){
+        char.push(str[0]);
+        var temp = str.substring(1);
+        p=[temp];
+        str=temp;
+    }
+   
+    var times = char.length-1;
+   
+   //Run this loop until we have used up all the letters in the char array
+   
+    for(var k=times; k>=0; k--){
+        var arr2=[];
+        //Go through each item in array p and the last item in the char array to the beginning, middle, and end of each 
+        //item in p.
+        
+        for(var z=p.length-1; z>=0; z--){
+            for(var i=0; i<p[z].length+1; i++){
+                var temp = p[z].substring(0,i) + char[k] + p[z].substring(i);
+                arr2.push(temp);
+            }
+        }
+        //Once we've gotten all the permutations of p that contain the last item in the char, set p to be the new 
+        //permutations array (arr2) and remove the last item in the array char since it's already included in arr2. 
+        
+        p=arr2;
+        char.pop();
+    }
+    result = withoutDoubleLetters(p);
+    return result.length;
+ }
+
+ function fact(numOfRotatingItems){
+    var iter=1;
+    for(var q=numOfRotatingItems; q>1; q--){
+      iter*=q;
+    }
+    return iter;
+ }
+   
+ function withoutDoubleLetters(arr){
+     var res =[];
+     arr.forEach(function(val){
+         if(noDoubleLettersPresent(val)){
+             res.push(val);
+         }
+         
+     });
+     return res;
+ }
+ function noDoubleLettersPresent(str){
+       if(str.match(/(.)\1/g)){
+           return false;
+       }else{
+           return true;
+       }
+ }
