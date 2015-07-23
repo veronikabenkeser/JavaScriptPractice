@@ -1,0 +1,10 @@
+function longestWord(str){
+    var arr=str.split(" ");
+    return arr.reduce(function(a, b){
+        if(b.length>a){
+            return b.length;
+        }else {
+            return a;
+        }
+    }, 0);
+}
