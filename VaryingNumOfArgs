@@ -1,0 +1,14 @@
+//The function takes a varying number of args, the first of which is an array, 
+//and returns the elements that are not found in that array.
+
+function destroyer(args) { 
+    
+    var allArgs = [].slice.call(arguments);
+    var exceptFirstArgs = allArgs.slice(1);
+    
+    return allArgs[0].filter(function(val1){
+        return exceptFirstArgs.indexOf(val1) === -1;
+    });
+} 
+
+destroyer([1,2,50, 23, 2, 10], 1, 2, 3); 
