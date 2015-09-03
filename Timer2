@@ -1,0 +1,23 @@
+function countTime(duration) {
+     var expected = 1;
+     var secsLeft;
+     var inter;
+     var startT = new Date().getTime();
+
+     inter = setInterval(function() {
+         //change in seconds
+         var sChange = Math.floor((new Date().getTime() - startT) / 1000);
+
+         if (sChange === expected) {
+             expected++;
+             secsLeft = duration - sChange;
+             console.log("seconds Left" + secsLeft);
+         }
+
+         if (secsLeft === 0) {
+             window.clearInterval(inter);
+             console.log("cleared");
+         }
+     }, 100);
+ }
+ countTime(60);
