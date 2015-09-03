@@ -1,0 +1,34 @@
+function countTime(duration) {
+     var expected = 1;
+     var secsLeft;
+     var startT = new Date().getTime();
+     var oneSecond = 1000;
+     var expected = startT + oneSecond;
+
+     window.setTimeout(step, oneSecond);
+
+     function step() {
+         var nowT = new Date().getTime();
+         var drift = nowT - expected;
+
+         if (drift > oneSecond) {
+             console.log("drift is over 1 second long!");
+         }
+
+         console.log('drift is ' + drift);
+         var msDelta = nowT - startT;
+         var secsLeft = duration - Math.floor(msDelta / 1000);
+         console.log("secsLeft" + secsLeft);
+
+         if (secsLeft === 0) {
+             ++count;
+             console.log("cleared");
+
+         } else {
+
+             expected += oneSecond;
+             setTimeout(step, Math.max(0, oneSecond - drift));
+         }
+     }
+ }
+ countTime(60);
