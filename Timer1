@@ -12,7 +12,7 @@ function countTime(duration) {
          var drift = nowT - expected; //If drift is positive, then the setTimeout function actually waited more than one second to fire.
 
          if (drift > oneSecond) {
-             console.log("drift is over 1 second long!");
+             console.log("Drift is over 1 second long!");
          }
 
          console.log('drift is ' + drift);
