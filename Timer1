@@ -9,7 +9,7 @@ function countTime(duration) {
 
      function step() {
          var nowT = new Date().getTime();
-         var drift = nowT - expected; //If drift is positive, then the setTimeout actually waited more than one second to fire.
+         var drift = nowT - expected; //If drift is positive, then the setTimeout function actually waited more than one second to fire.
 
          if (drift > oneSecond) {
              console.log("drift is over 1 second long!");
